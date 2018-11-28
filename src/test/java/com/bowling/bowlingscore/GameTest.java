@@ -14,92 +14,86 @@ public class GameTest {
 	}
 
 	@Test
-	public void testScoreClaculation_scenario_1() {
-		game.addFrame(new Frame(1, 4));
-		Assert.assertTrue("Score without strike or spare", game.score() == 5);
-		game.addFrame(new Frame(1, 8));
-		Assert.assertTrue("score without strike or spare", game.score() == 5 + 9);
-	}
-
-	@Test
-	public void testScoreClaculation_scenario_2() {
-		game.addFrame(new Frame(10, 0));
-		game.addFrame(new Frame(1, 2));
-		Assert.assertTrue("first strike and no Bonus for the next 2 balls", game.score() == 10 + 3);
-	}
-
-	@Test
-	public void testScoreClaculation_scenario_3() {
-		game.addFrame(new Frame(10, 0));
-		game.addFrame(new Frame(8, 2));
-		Assert.assertTrue("first strike and spare for the next 2 balls", game.score() == 10 + 10);
-	}
-
-	@Test
-	public void testScoreClaculation_scenario_4() {
-		game.addFrame(new Frame(10, 0));
-		game.setBonus(10, 0);
-		Assert.assertTrue("bonus ", game.actualbonus == 10);
-		
-		game.addFrame(new Frame(10, 0));
-		Assert.assertTrue("first strike and another strike for the next ball", game.score() == 10 + 10);
-		game.setBonus(8, 1);
-		Assert.assertTrue("bonus ", game.actualbonus == 9);
-		
-		game.addFrame(new Frame(8, 1));
-		Assert.assertTrue("score ", game.score() == 10 + 10 + 9);
-	}
-
-	@Test
 	public void testScoreClaculation_given_scenario() {
-//		game.setBonus(10, 0);
-		game.addFrame(new Frame(1, 4));
+
+		//frame 1
+		game.addFrame(new Frame(1, 4, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(4, 5);
 		Assert.assertTrue("score ", game.score() == 5);
+		game.setScoreForFrame(0);
 
-		game.setBonus(4, 5);
-		game.addFrame(new Frame(4, 5));
+		//frame 2
+		game.addFrame(new Frame(4, 5, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(6, 4);
 		Assert.assertTrue("score ", game.score() == 14);
+		game.setScoreForFrame(1);
 
-		game.setBonus(6, 4);
-		game.addFrame(new Frame(6, 4)); // spare
+		//frame 3
+		// spare
+		game.addFrame(new Frame(6, 4, game));
+		// check if the current frame spare or strike and get the bonus from the next frame
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(5, 5);
 		Assert.assertTrue("score ", game.score() == 29);
+		game.setScoreForFrame(2);
 
-		game.setBonus(5, 5);
-		game.addFrame(new Frame(5, 5)); // spare
+		//frame 4
+		// spare
+		game.addFrame(new Frame(5, 5, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(10, 0);
 		Assert.assertTrue("score ", game.score() == 49);
+		game.setScoreForFrame(3);
 
-		game.setBonus(10, 0);
-		game.addFrame(new Frame(10, 0)); // strike
+		//frame 5
+		// strike
+		game.addFrame(new Frame(10, 0, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(0, 1);
 		Assert.assertTrue("score ", game.score() == 60);
-
-		game.addFrame(new Frame(0, 1));
-		game.setBonus(0, 1);
+		game.setScoreForFrame(4);
+		
+		//frame 6
+		game.addFrame(new Frame(0, 1, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(7, 3);
 		Assert.assertTrue("score ", game.score() == 61);
+		game.setScoreForFrame(5);
 
-		game.setBonus(7, 3);
-		game.addFrame(new Frame(7, 3));
+		//frame 7
+		// spare
+		game.addFrame(new Frame(7, 3, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(6, 4);
 		Assert.assertTrue("score ", game.score() == 77);
+		game.setScoreForFrame(6);
 
-		game.setBonus(6, 4);
-		game.addFrame(new Frame(6, 4));
+		//frame 8
+		// spare
+		game.addFrame(new Frame(6, 4, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(10, 0);
 		Assert.assertTrue("score ", game.score() == 97);
+		game.setScoreForFrame(7);
 
-		game.setBonus(10, 0);
-		game.addFrame(new Frame(10, 0));
+		//frame 9
+		// strike
+		game.addFrame(new Frame(10, 0, game));
+		if (game.isBonusToGetFromTheNextFrameExist())
+			game.setBonus(2, 8);
 		Assert.assertTrue("score ", game.score() == 117);
+		game.setScoreForFrame(8);
 
-		game.setBonus(2, 8);
-		game.addFrame(new Frame(2, 8));
-		
-		
-		Assert.assertTrue("score ", game.score() == 133 - 6 );
-
-//		Assert.assertTrue("score ", game.score() == 10 + 10 + 9);
+		//frame 10
+		// last frame
+		game.addFrame(new Frame(2, 8, game));
+		if (game.isLastFrame()) {
+			if (game.isThreeBallsRemaining()) {
+				Assert.assertTrue("score ", game.scores.get(8) + game.scoreLastFrame(2, 8) + /*third ball*/6  == 133);
+			}
+		}		
+		game.setScoreForFrame(9);
 	}
-
-	@Test
-	public void testScoreClacu() {
-		Assert.assertTrue(true);
-	}
-
 }
