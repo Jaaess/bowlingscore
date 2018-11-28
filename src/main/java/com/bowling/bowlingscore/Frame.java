@@ -6,23 +6,17 @@ public class Frame {
 	private int secondBall;
 	Game game;
 
-	public Frame(int firstBall, int secondBall) {
+	public Frame(int firstBall, int secondBall, Game game) {
 		this.firstBall = firstBall;
 		this.secondBall = secondBall;
-		game = new Game();
+		this.game = game;
 	}
 
-	public Frame(int i, int j, int k) {
-
-	}
 
 	// the score of a single frame
 	public int score() {
-		if (isStrike() == true)
-			return firstBall + bonus();
-		else if (isSpare() == true)
+		if (isStrike() == true || isSpare() == true )
 			return 10 + bonus();
-		// return firstBall + secondBall + bonus();
 		else
 			return firstBall + secondBall;
 	}
@@ -41,15 +35,8 @@ public class Frame {
 		return false;
 	}
 
-	// return whether this is the last frame of the match
-	public boolean isLastFrame() {
-		if (game.frames.size() == 9)
-			return true;
-		return false;
-	}
-
 	// bonus throws
 	public int bonus() {
-		return game.actualbonus;
+		return game.getActualbonus();
 	}
 }
