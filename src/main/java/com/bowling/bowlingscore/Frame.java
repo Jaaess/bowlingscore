@@ -4,15 +4,16 @@ public class Frame {
 
 	private int firstBall;
 	private int secondBall;
-	Game game = new Game();
+	Game game;
 
 	public Frame(int firstBall, int secondBall) {
 		this.firstBall = firstBall;
 		this.secondBall = secondBall;
+		game = new Game();
 	}
 
 	public Frame(int i, int j, int k) {
-		
+
 	}
 
 	// the score of a single frame
@@ -20,8 +21,10 @@ public class Frame {
 		if (isStrike() == true)
 			return firstBall + bonus();
 		else if (isSpare() == true)
-			return firstBall + secondBall + bonus();
-		return firstBall + secondBall;
+			return 10 + bonus();
+		// return firstBall + secondBall + bonus();
+		else
+			return firstBall + secondBall;
 	}
 
 	// returns whether the frame is a strike or not
@@ -49,5 +52,4 @@ public class Frame {
 	public int bonus() {
 		return game.actualbonus;
 	}
-
 }

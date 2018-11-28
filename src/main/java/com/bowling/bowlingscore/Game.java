@@ -5,10 +5,12 @@ import java.util.List;
 
 public class Game {
 
-	// a bowling game is made of (at least) 10 frames
+	// a bowling game is made of 10 frames
 	public List<Frame> frames = new ArrayList<Frame>();
-	private Frame bonus;
+	private int bonus;
 	public int actualbonus = 0;
+	// number of the ball to throw: from 1 to 20
+	private int actualBall = 0;
 
 	public Game() {
 	}
@@ -17,11 +19,11 @@ public class Game {
 		frames.add(frame);
 	}
 
-	public void setBonus(int firstThrow, int secondThrow) {
+	public void setBonus(int firstBall, int secondBall) {
 		if (frames.get(frames.size() - 1).isStrike())
-			actualbonus = firstThrow + secondThrow;
+			actualbonus = firstBall + secondBall;
 		if (frames.get(frames.size() - 1).isSpare())
-			actualbonus = firstThrow;
+			actualbonus = firstBall;
 	}
 
 	public int score() {
