@@ -72,16 +72,15 @@ public class App {
 		game.addFrame(new Frame(Integer.parseInt(args[18]), Integer.parseInt(args[19]), game));
 		if (game.isLastFrame()) {
 			if (game.isThreeBallsRemaining()) {
-				System.out.println("------------------------------FINALE SCORE:----------------------------------\n ");
-				System.out.println( "----- \t" +  game.scores.get(8) + game.scoreLastFrame(Integer.parseInt(args[18]), Integer.parseInt(args[19]))
-								+ Integer.parseInt(args[20]));
-				System.out.println("-----------------------------------------------------------------------------\n ");
+//				System.out.println("------------------------------FINALE SCORE:----------------------------------\n ");
+//				System.out.println(game.scores.get(8) + game.scoreLastFrame(Integer.parseInt(args[18]), Integer.parseInt(args[19]))
+//								+ Integer.parseInt(args[20]));
+//				System.out.println("-----------------------------------------------------------------------------\n ");
 			}
 		}
 
 		System.out.println("------------------------------FINALE SCORE:----------------------------------\n ");
-		System.out.println( "----- \t" +  game.scores.get(8) + game.scoreLastFrame(Integer.parseInt(args[18]), Integer.parseInt(args[19]))
-						+ Integer.parseInt(args[20]));
+		System.out.println(game.scores.get(8) + game.scoreLastFrame(Integer.parseInt(args[18]), Integer.parseInt(args[19])) + Integer.parseInt(args[20]));
 		System.out.println("-----------------------------------------------------------------------------\n ");
 
 	}
