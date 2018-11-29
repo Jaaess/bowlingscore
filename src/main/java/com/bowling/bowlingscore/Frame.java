@@ -30,7 +30,7 @@ public class Frame {
 
 	// return whether a frame is a spare or not
 	public boolean isSpare() {
-		if (firstBall + secondBall == 10 && firstBall != 10 && secondBall != 10)
+		if (firstBall + secondBall >= 10 && firstBall != 10 && secondBall != 10)
 			return true;
 		return false;
 	}
