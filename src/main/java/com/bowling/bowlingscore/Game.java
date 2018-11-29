@@ -55,7 +55,10 @@ public class Game {
 	}
 	
 	public int scoreLastFrame(int firstBall, int secondBall){
-		if (frames.get(9).isStrike() == true || frames.get(9).isSpare() == true )
+
+		if (firstBall == 10 && secondBall == 10 ) // two strikes consecutively
+			return 20;
+		else if( (firstBall + secondBall) >= 10) // spare
 			return 10;
 		else
 			return firstBall + secondBall;
