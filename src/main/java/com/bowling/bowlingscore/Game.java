@@ -34,6 +34,7 @@ public class Game {
 	}
 
 	public boolean isThreeBallsRemaining() {
+		thrownBalls = 0;
 		return true;
 	}
 
@@ -75,7 +76,6 @@ public class Game {
 	}
 
 	public int getActualbonus() {
-		thrownBalls = 0;
 		return actualbonus;
 	}
 
