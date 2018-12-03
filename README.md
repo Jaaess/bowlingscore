@@ -1,8 +1,12 @@
 # bowlingscore
 
-### Aufagbenstellung 
+#### Aufagbenstellung 
 
 ![alt text](https://raw.githubusercontent.com/JawharMbarek/bowlingscore/master/Bowling.PNG)
+
+
+
+#### Aufagbenlösung
 
 ### 1. Install Maven
 ### 2. CMD command line to run the unit tests:
