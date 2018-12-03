@@ -1,5 +1,9 @@
 # bowlingscore
 
+### Aufagbenstellung 
+
+![alt text](https://raw.githubusercontent.com/JawharMbarek/bowlingscore/master/Bowling.PNG)
+
 ### 1. Install Maven
 ### 2. CMD command line to run the unit tests:
 ```
