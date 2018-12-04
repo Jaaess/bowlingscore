@@ -1,12 +1,20 @@
 # bowlingscore
 
-### 1. Install Maven
-### 2. CMD command line to run the unit tests:
+#### Aufagbenstellung 
+
+![alt text](https://raw.githubusercontent.com/JawharMbarek/bowlingscore/master/Bowling.PNG)
+
+
+
+#### Aufagbenlösung
+
+##### 1. Install Maven
+##### 2. CMD command line to run the unit tests:
 ```
 ...\bowlingscore> mvn test
 ```
 
-### 3. CMD command line to run the program:
+##### 3. CMD command line to run the program:
 ```
 mvn exec:java -Dexec.mainClass=com.bowling.bowlingscore.App -Dexec.args="1 4 4 5 6 4 5 5 10 0 0 1 7 3 6 4 10 0 2 8 6"
 ```
