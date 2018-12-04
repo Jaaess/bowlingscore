@@ -13,6 +13,20 @@ public class BowlingGameTests {
 	public void setUp() {
 	}
 
+	public void rollMany(int pins, int n) {
+		for (int i = 0; i < n; i++) {
+			game.roll(pins);
+		}
+	}
+
+	private void roleASpare() {
+		rollMany(5, 2);
+	}
+
+	private void roleAStrike() {
+		game.roll(10);
+	}
+
 	@Test
 	public void rollingOneScoresOne() {
 		game.roll(1);
@@ -27,17 +41,21 @@ public class BowlingGameTests {
 
 	@Test
 	public void rollingOneThenOneScoresTwo() {
-		for (int i = 0; i < 2; i++)
-			game.roll(1);
+		rollMany(1, 2);
 		assertEquals(2, game.score());
 	}
 
 	@Test
 	public void rollingASpareThenAOneScoresTwelve() {
-		game.roll(5);
-		game.roll(5);
+		roleASpare();
 		game.roll(1);
 		assertEquals(12, game.score());
 	}
 
+	@Test
+	public void canScorePerfectGame() {
+		
+		game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+		assertEquals(300, game.score());
+	}
 }
