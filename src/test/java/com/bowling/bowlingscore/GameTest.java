@@ -90,7 +90,7 @@ public class GameTest {
 
 		// frame 10
 		// last frame
-		game.addFrame(new Frame(2, 8, game));
+		// game.addFrame(new Frame(2, 8, game));
 		if (game.isLastFrame()) {
 			if (game.isThreeBallsRemaining()) {
 				Assert.assertTrue("score ", game.scores.get(8) + game.scoreLastFrame(2, 8) + /* third ball */6 == 133);
@@ -175,11 +175,10 @@ public class GameTest {
 
 		// frame 10
 		// last frame
-		game.addFrame(new Frame(10, 0, game));
+		// game.addFrame(new Frame(10, 0, game));
 		if (game.isLastFrame()) {
 			if (game.isThreeBallsRemaining()) {
-				Assert.assertTrue("score ",
-						game.scores.get(8) + game.scoreLastFrame(10, 0) + /* third ball */10 == 300);
+				Assert.assertTrue(game.scores.get(8) + game.scoreLastFrame(10, 10) + /* third ball */10 == 300);
 			}
 		}
 		game.setScoreForFrame(9);

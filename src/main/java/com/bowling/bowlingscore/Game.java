@@ -9,13 +9,13 @@ public class Game {
 	public List<Frame> frames = new ArrayList<Frame>();
 	// 10 scores for 10 frames
 	public List<Integer> scores = new ArrayList<Integer>();
-	
+
 	private int actualbonus = 0;
 	// number of the ball to throw from 0 to 20
 	private int thrownBalls = 0;
 
 	public Game() {
-		
+
 	}
 
 	public void addFrame(Frame frame) {
@@ -53,18 +53,18 @@ public class Game {
 
 		return score;
 	}
-	
-	public int scoreLastFrame(int firstBall, int secondBall){
 
-		if (firstBall == 10 && secondBall == 10 ) // two strikes consecutively
+	public int scoreLastFrame(int firstBall, int secondBall) {
+
+		if (firstBall == 10 && secondBall == 10) // two strikes consecutively
 			return 20;
-		else if( (firstBall + secondBall) >= 10) // spare
+		else if ((firstBall + secondBall) >= 10) // spare
 			return 10;
 		else
 			return firstBall + secondBall;
 	}
-	
-	// check if there is a bonus 
+
+	// check if there is a bonus
 	public boolean isBonusToGetFromTheNextFrameExist() {
 		if (frames.get(frames.size() - 1).isStrike() || frames.get(frames.size() - 1).isSpare())
 			return true;
@@ -73,7 +73,7 @@ public class Game {
 
 	// return whether this is the last frame of the match
 	public boolean isLastFrame() {
-		if (frames.size() == 9)
+		if (frames.size() == 10)
 			return true;
 		return false;
 	}
